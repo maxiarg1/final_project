@@ -1,6 +1,9 @@
 from tkinter import Tk
 import view
+import my_server
 import my_observer
+import threading
+
 
 
 class Controller:
@@ -12,4 +15,7 @@ class Controller:
 if __name__ == "__main__":
     root_tk = Tk()
     Controller(root_tk)
+    server = my_server.Server()
+    threading.Thread(target=server.start).start()
+    print("Servidor en ejecución")
     root_tk.mainloop()
