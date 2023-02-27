@@ -1,10 +1,11 @@
 import socket
 import threading
 import model
-from view import MyView
 
 
-class Server(MyView):
+
+
+class Server():
     def __init__(self, host='127.0.0.1', port=5000):
         self.host = host
         self.port = port
@@ -12,8 +13,6 @@ class Server(MyView):
         self.sock.bind((self.host, self.port))
         self.db = model.Formulario()
 
-
-        
     def start(self):
         self.sock.listen(1)
         print(f"Servidor escuchando en {self.host}:{self.port}")
@@ -28,7 +27,6 @@ class Server(MyView):
             if not message:
                 break
             self.nombre, self.apellido, self.fecha = message.split(',')
-            
             self.db.fecha = self.fecha
             self.db.nombre = self.nombre
             self.db.apellido = self.apellido

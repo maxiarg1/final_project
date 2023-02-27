@@ -1,9 +1,7 @@
 import re
-import sqlite3
 from tkinter import messagebox
 from tkinter.messagebox import showerror
 from peewee import *
-import tkinter as tk
 from my_observer import Subject
 
 

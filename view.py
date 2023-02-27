@@ -176,7 +176,7 @@ class MyView:
         self.tree.grid(row=6, column=2, columnspan=4, rowspan=4, sticky=W, padx=1, pady=5, ipady=4)
 
         scrollbar = tk.Scrollbar(self.root, orient="vertical", command=self.tree.yview)
-        scrollbar.grid(row=6, column=4, sticky="ns")
+        scrollbar.grid(row=6, column=4, rowspan=4, sticky="ns")
 
         self.tree.configure(yscrollcommand=scrollbar.set)
 
