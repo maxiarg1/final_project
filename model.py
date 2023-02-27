@@ -30,7 +30,7 @@ class Crud(Subject):
     ):
         pass
 
-    def confirmacion_consulta(self, func):
+    def confirmacion_consulta(func):
         def wrapper(*args, **kwargs):
             if messagebox.askokcancel("Confirmación", "¿Está seguro de que desea realizar la consulta?"):
                 return func(*args, **kwargs)
