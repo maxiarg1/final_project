@@ -30,7 +30,7 @@ class Crud(Subject):
     ):
         pass
 
-    def confirmacion_consulta(func):
+    def confirmacion_consulta(self, func):
         def wrapper(*args, **kwargs):
             if messagebox.askokcancel("Confirmación", "¿Está seguro de que desea realizar la consulta?"):
                 return func(*args, **kwargs)
@@ -111,19 +111,19 @@ class Crud(Subject):
             message="El registro se perderá definitivamente, desea continuar?",
             title="Advertencia",
         ):
-            valor = tree.selection()
-            item = tree.item(valor)
-            borrar = Formulario.get(Formulario.id == item["text"])
-            borrar.delete_instance()
-            tree.delete(valor)
+            self.valor = tree.selection()
+            self.item = tree.item(self.valor)
+            self.borrar = Formulario.get(Formulario.id == self.item["text"])
+            self.borrar.delete_instance()
+            tree.delete(self.valor)
             messagebox.showinfo("Operación exitosa", "Usted ha eliminado el registro")
         else:
             pass
 
 #-----------------------------actualizar treeview------------------------------
     def actualizar_treeview(self, mytreeview):
-        records = mytreeview.get_children()
-        for element in records:
+        self.records = mytreeview.get_children()
+        for element in self.records:
             mytreeview.delete(element)
         for fila in Formulario.select():
             mytreeview.insert(

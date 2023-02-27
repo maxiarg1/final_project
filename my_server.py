@@ -11,7 +11,7 @@ class Server():
         self.port = port
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.bind((self.host, self.port))
-        self.db = model.Formulario()
+        
 
     def start(self):
         self.sock.listen(1)
@@ -23,6 +23,7 @@ class Server():
 
     def handle_client(self, conn, addr):
         while True:
+            self.db = model.Formulario()
             message = conn.recv(1024).decode('utf-8')
             if not message:
                 break
