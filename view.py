@@ -13,7 +13,6 @@ from tkinter import messagebox
 
 
 
-
 class MyView:
     def __init__(self, ventana) -> None:
         self.root = ventana
@@ -158,21 +157,7 @@ class MyView:
             activeforeground="#B30600",
         )
         self.delete_button.grid(row=9, column=1, padx=10, pady=5, sticky="") 
-        #---------------------------------------------------------------
-        '''
-        self.boton_consulta_fecha = Button(
-            self.root,
-            text="Consulta por fecha",
-            command=lambda: self.obj.consultar_fecha(self.tree, self.date_val, self.name_val, self.lname_val),
-            font=("Roboto", 10),
-            width=22,
-            activebackground="#F2EDFF",
-            activeforeground="#4CD269",
-        )
-        self.boton_consulta_fecha.grid(row=8, column=1, padx=10, pady=5, sticky=W)
-        '''
-        #-------------------------------------------------------------
-       
+        
 
         #---------------------Treeview---------------------
         self.tree = ttk.Treeview(self.root)
@@ -191,7 +176,7 @@ class MyView:
         self.tree.grid(row=6, column=2, columnspan=4, rowspan=4, sticky=W, padx=1, pady=5, ipady=4)
 
         scrollbar = tk.Scrollbar(self.root, orient="vertical", command=self.tree.yview)
-        scrollbar.grid(row=6, column=4, sticky="ns")
+        scrollbar.grid(row=6, column=4, rowspan=4, sticky="ns")
 
         self.tree.configure(yscrollcommand=scrollbar.set)
 
